@@ -60,44 +60,14 @@ class MainActivity2 : AppCompatActivity() {
 
         }
 
-        // Ya no se usa
-        binding.fab.setOnClickListener {
-            //viewModel.deleteLocalDatabase()
 
-            //           val functionsVsLambdas = FunctionsVsLambdas()
-            //           val item = functionsVsLambdas.reciboIntDevuelvoString(1)
-            //           Log.d("FUNCIONES_ANONIMAS", item)
 
-            /*     viewModel.trabajoPesado({
-                     Log.d("CORRUTINAS", "PARENT FINISHED $it")
-                     runOnUiThread({
-                         binding.fab.visibility = View.GONE
-                     })
-                 })*/
 
-            viewModel.trabajoPesadoConCorrutina()
-        }
 
-        viewModel.numberOfAppOpened.observe(this) {
-            //Toast.makeText(binding.root.context, "Número de veces abierta: $it", Toast.LENGTH_LONG).show()
-            Snackbar.make(binding.root, "Número de veces abierta: $it", Snackbar.LENGTH_LONG).show()
-        }
 
-        viewModel.increaseNumberOfAppOpened()
 
 
         // MVVM - Model View ViewModel
     }
 
-    private fun funcionDelBoton() {
-        GlobalScope.launch(Dispatchers.IO) {
-            Log.d("CORRUTINA", "START")
-            Thread.sleep(10000)
-            Log.d("CORRUTINA", "END")
-
-            GlobalScope.launch(Dispatchers.Main) {
-                binding.fab.visibility = View.GONE
-            }
-        }
-    }
 }
